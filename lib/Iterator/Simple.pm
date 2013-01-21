@@ -3,7 +3,7 @@ package Iterator::Simple;
 use strict;
 
 use Carp;
-use UNIVERSAL qw(isa);
+use if $^V lt "v5.12.0", "UNIVERSAL", qw(isa);## since v5.12.0 this is deprecated
 use Scalar::Util qw(blessed reftype);
 use overload;
 use base qw(Exporter);
