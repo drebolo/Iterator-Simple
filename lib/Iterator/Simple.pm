@@ -167,7 +167,7 @@ sub ifilter {
 		}
 		while(defined(local $_ = $src->())) {
 			next unless defined($rv = $code->());
-			return $rv unless isa $rv, ITERATOR_CLASS; 
+      return $rv unless UNIVERSAL::isa $rv, ITERATOR_CLASS;
 			$buf = $rv;
 			return $rv if defined($rv = $buf->());
 			undef $buf;
@@ -232,7 +232,7 @@ sub iflatten {
 		while(1){
 			$rv = $src->();
 			return if not defined $rv;
-			return $rv unless isa $rv, ITERATOR_CLASS; 
+      return $rv unless UNIVERSAL::isa $rv, ITERATOR_CLASS;
 			$buf = $rv;
 			return $rv if defined($rv = $buf->());
 			undef $buf;
